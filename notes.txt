@@ -1,0 +1,5 @@
+1. argon2:
+     - https://docs.djangoproject.com/en/dev/topics/auth/passwords/#using-argon2-with-django
+
+2. GENERATE SECRETE KEY using secrete module
+     - python -c "import secrets; print(secrets.token_urlsafe(30))"
