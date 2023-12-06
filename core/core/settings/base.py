@@ -25,7 +25,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    "rest_framework",
+     "rest_framework",
     "django_filters",
     "django_countries",
     "phonenumber_field",
@@ -87,9 +87,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': env.db("DATABASE_URL")
-}
+DATABASES = {"default": env.db("DATABASE_URL")}
 
 
 # https://docs.djangoproject.com/en/dev/topics/auth/passwords/#using-argon2-with-django
@@ -136,7 +134,7 @@ USE_TZ = True
 # CONFIG for  [django.contrib.sites]
 SITE_ID = 1
 
-ADMIN_URL = "supersecrete/"
+ADMIN_URL = "supersecret/"
 
 
 # Static files (CSS, JavaScript, Images)

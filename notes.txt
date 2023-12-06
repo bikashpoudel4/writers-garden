@@ -3,3 +3,17 @@
 
 2. GENERATE SECRETE KEY using secrete module
      - python -c "import secrets; print(secrets.token_urlsafe(30))"
+
+
+3. COMMANDS
+     DOCKER COMPOSE
+     - docker compose -f local.yml config
+     - docker compose -f local.yml
+     - docker compose -f local.yml logs
+     - docker compose -f local.yml logs api
+
+     - docker compose -f local.yml up --build -d --remove-orphans
+
+
+     -FOR MAC BOOK
+     - export DOCKER_DEFAULT_PLATFORM=linux/amd64
