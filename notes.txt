@@ -14,6 +14,9 @@
 
      - docker compose -f local.yml up --build -d --remove-orphans
 
+     Check Volume
+     - docker volume inspect src_local_postgres_data
+
 
      -FOR MAC BOOK
      - export DOCKER_DEFAULT_PLATFORM=linux/amd64
