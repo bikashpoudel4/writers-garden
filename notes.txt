@@ -17,6 +17,8 @@
 
      - docker compose -f local.yml exec postgres backup
      - docker compose -f local.yml exec postgres backups
+     - docker compose -f local.yml exec postgres restore backup(backname = backup_2023_12_13T12_51_18.sql.gz)
+     - docker compose -f local.yml exec postgres restore backup_2023_12_13T12_51_18.sql.gz
 
      Check Volume
      - docker volume inspect src_local_postgres_data

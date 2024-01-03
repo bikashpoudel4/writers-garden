@@ -24,9 +24,9 @@ sys.exit(0)
 END
 }
 until postgres_ready; do
->&2 echo "Waiting for PostgreSQL to become available.....:-("
+>&2 echo "Waiting for PostgreSQL to become available.....MSG ==docker\django\entrypoint==== :-("
 sleep 1
 done
->&2 echo "PostgreSQL is ready!!!!.....:-)"
+>&2 echo "PostgreSQL is ready!!!!....MSG ==docker\django\entrypoint====.:-)"
 
 exec "$@"
