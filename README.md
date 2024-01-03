@@ -1,2 +1,2 @@
 # writers-garden
-Advance django application 
+Advance Django application 
