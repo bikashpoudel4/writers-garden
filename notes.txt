@@ -34,3 +34,7 @@
 
 4. Installs
      - choco install make
+
+Check files: 
+     - envs.local - .django
+     - core.settings - local.py

@@ -20,6 +20,7 @@ services:
         depends_on:
             - postgres
             - mailhog
+            - redis
         command: /start
         networks:
         # can put any name, for now its core
@@ -45,6 +46,46 @@ services:
         networks:
             - core
     
+    redis:
+        image: redis:7-alpine
+        networks:
+            - core
+    
+    celery_worker:
+        build:
+            context: .
+            dockerfile: ./docker/local/django/Dockerfile
+        command: /start-celeryworker
+        volumes:
+            - .:/app
+        env_file:
+            - ./.envs/.local/.django
+            - ./.envs/.local/.postgres
+        depends_on:
+            - redis
+            - postgres
+            - mailhog
+        networks:
+            - core
+
+    flower:
+        build:
+            context: .
+            dockerfile: ./docker/local/django/Dockerfile
+        command: /start-flower
+        volumes:
+            - flower_data:/data
+        env_file:
+            - ./.envs/.local/.django
+            - ./.envs/.local/.postgres
+        ports:
+            - "5555:5555"
+        depends_on:
+            - redis
+            - postgres
+        networks:
+            - core
+
     nginx:
         restart: always
         depends_on:
@@ -69,3 +110,4 @@ volumes:
     media_volume:
     local_postgres_data: {}
     local_postgres_data_backups: {}
+    flower_data: {}
