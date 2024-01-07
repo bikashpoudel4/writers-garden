@@ -3,6 +3,7 @@
 
 2. GENERATE SECRETE KEY using secrete module
      - python -c "import secrets; print(secrets.token_urlsafe(30))"
+     - python -c "import secrets; print(secrets.token_urlsafe(38))"
 
 
 3. COMMANDS

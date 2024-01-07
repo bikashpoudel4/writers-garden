@@ -25,13 +25,19 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-     "rest_framework",
+    "rest_framework",
     "django_filters",
     "django_countries",
     "phonenumber_field",
     "drf_yasg",
     "corsheaders",
     "djcelery_email",
+    "rest_framework.authtoken",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
 ]
 
 LOCAL_APPS = [
