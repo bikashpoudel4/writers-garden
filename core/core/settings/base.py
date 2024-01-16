@@ -62,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -200,7 +202,7 @@ SIMPLE_JWT = {
 
 REST_AUTH = {
     "USE_JWT": True,
-    "JWT_AUTH_COOKIE": "authors-access-token",
+    "JWT_AUTH_COOKIE": "writers-access-token",
     "JWT_AUTH_REFRESH_COOKIE": "writers-refresh-token", #can call anything we want
     "REGISTER_SERIALIZER": "core_apps.users.serializers.CustomRegisterSerializer",
 }
@@ -215,8 +217,14 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
-ACCOUNT_USER_MODEL_USERNAME_FILED = None
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_USERNAME_REQUIRED = False
+
+# https://django-rest-auth.readthedocs.io/en/latest/api_endpoints.html
+# Enable the use of old_password field
+OLD_PASSWORD_FIELD_ENABLED = True
+
+# LOGOUT_ON_PASSWORD_CHANGE = False
 
 # LOGGING CONGIG
 LOGGING = {
