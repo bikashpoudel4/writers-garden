@@ -180,7 +180,7 @@ if USE_TZ:
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES":[
-        "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
+        "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
@@ -205,6 +205,7 @@ REST_AUTH = {
     "JWT_AUTH_COOKIE": "writers-access-token",
     "JWT_AUTH_REFRESH_COOKIE": "writers-refresh-token", #can call anything we want
     "REGISTER_SERIALIZER": "core_apps.users.serializers.CustomRegisterSerializer",
+    "OLD_PASSWORD_FIELD_ENABLED": True,
 }
 
 AUTHENTICATION_BACKENDS = [
@@ -219,12 +220,6 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_USERNAME_REQUIRED = False
-
-# https://django-rest-auth.readthedocs.io/en/latest/api_endpoints.html
-# Enable the use of old_password field
-OLD_PASSWORD_FIELD_ENABLED = True
-
-# LOGOUT_ON_PASSWORD_CHANGE = False
 
 # LOGGING CONGIG
 LOGGING = {
