@@ -1,6 +1,6 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
-from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
@@ -16,7 +16,7 @@ class Profile(TimeStampedModel):
         FEMALE = "F", _("Female")
         OTHER = "O", _("Other")
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
     phone_number = PhoneNumberField(verbose_name=_("phone number"), max_length=30, default="+4917665116987")
     about_me = models.TextField(verbose_name=_('about me'), default="say something about yourself")
     gender = models.CharField(verbose_name=_("gender"), choices=Gender.choices, default=Gender.OTHER, max_length=20)

@@ -54,7 +54,7 @@ class UpdateProfileAPIView(generics.RetrieveAPIView):
         serializer.save()
         return Response(serializer.data, status = status.HTTP_200_OK)
 
-class FollowerList(APIView):
+class FollowerListView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
