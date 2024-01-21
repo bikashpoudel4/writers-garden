@@ -33,7 +33,7 @@ class ArticleView(TimeStampedModel):
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="article_views")
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="user_views")
     viewer_ip = models.GenericIPAddressField(verbose_name=_("Viewer IP"), null=True, blank=True)
-    print("VIEWER IP : From articles Models: ", viewer_ip)
+    # print("VIEWER IP : From articles Models: ", viewer_ip)
 
     class Meta:
         verbose_name = _("Article View")

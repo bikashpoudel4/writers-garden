@@ -12,7 +12,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 class ArticleViewAdmin(admin.ModelAdmin):
-    list_display = ["pkid", "author", "user", "viewer_ip"]
+    list_display = ["pkid", "article", "user", "viewer_ip"]
     list_display_links = ["pkid", "article"]
     list_filter = ["created_at", "updated_at"]
     search_fields = ["article", "user", "viewer_ip"]

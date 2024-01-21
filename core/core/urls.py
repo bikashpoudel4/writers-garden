@@ -35,6 +35,9 @@ urlpatterns = [
     # Form own apps
     # Profiles app
     path("api/v1/profiles/", include("core_apps.profiles.urls")),
+
+    # Articles app
+    path("api/v1/articles/", include("core_apps.articles.urls")),
     
 ]
 
