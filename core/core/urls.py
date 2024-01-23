@@ -44,6 +44,9 @@ urlpatterns = [
 
     # Bookmark app
     path("api/v1/bookmarks/", include("core_apps.bookmarks.urls")),
+
+    # Responses app
+    path("api/v1/responses/", include("core_apps.responses.urls")),
 ]
 
 """For creating admin site customization"""
