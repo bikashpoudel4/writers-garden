@@ -84,3 +84,6 @@ test-coverage:
 
 test-coverage-html:
 	docker compose -f local.yml run --rm api pytest -p no:warnings --cov=. --cov-report html
+
+pytest:
+	docker compose -f local.yml run --rm api pytest
