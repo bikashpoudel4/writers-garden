@@ -61,9 +61,20 @@ isort-diff:
 isort:
 	docker compose -f local.yml exec api isort . --skip venv --skip migrations
 
+container-status:
+	docker ps -a
 
 clearcache:
 	docker compose -f local.yml run --rm api python manage.py clearcache
 
 dbshell:
 	docker compose -f local.yml run --rm api python manage.py dbshell
+
+search:
+	docker compose -f local.yml exec api python manage.py search_index --create
+
+search-rebuild:
+	docker compose -f local.yml exec api python manage.py search_index --rebuild
+
+search-populate:
+	docker compose -f local.yml exec api python manage.py search_index --populate

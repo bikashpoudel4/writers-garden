@@ -47,6 +47,9 @@ urlpatterns = [
 
     # Responses app
     path("api/v1/responses/", include("core_apps.responses.urls")),
+
+    # Search app
+    path("api/v1/elastic/", include("core_apps.search.urls")),
 ]
 
 """For creating admin site customization"""

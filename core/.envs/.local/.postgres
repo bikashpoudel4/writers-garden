@@ -9,3 +9,4 @@ POSTGRES_PORT=5432
 POSTGRES_DB=writers-heaven
 POSTGRES_USER=bikash
 POSTGRES_PASSWORD=Passw0rd
+DATABASE_URL=postgres://bikash:Passw0rd@postgres:5432/writers-heaven

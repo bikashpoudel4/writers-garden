@@ -40,6 +40,8 @@ THIRD_PARTY_APPS = [
     "dj_rest_auth",
     "dj_rest_auth.registration",
     "taggit",
+    "django_elasticsearch_dsl",
+    "django_elasticsearch_dsl_drf",
 ]
 
 LOCAL_APPS = [
@@ -50,6 +52,7 @@ LOCAL_APPS = [
     "core_apps.ratings",
     "core_apps.bookmarks",
     "core_apps.responses",
+    "core_apps.search",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -224,12 +227,24 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_USERNAME_REQUIRED = False
 
-# SWAGGAR SETTINGS
-SWAGGER_SETTINGS = {
-    'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg.inspectors.SwaggerAutoSchema',
-    # Other Swagger settings
-}
+# # SWAGGAR SETTINGS
+# SWAGGER_SETTINGS = {
+#     'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg.inspectors.SwaggerAutoSchema',
+#     # Other Swagger settings
+# }
 
+# DJANGO-ELASTICSEARCH-CONFIGS["django_elasticsearch_dsl","django_elasticsearch_dsl_drf"]
+ELASTICSEARCH_DSL = {
+    "default": {
+        # "hosts": "es:9200", 
+        "hosts": "http://es:9200", 
+    },
+}
+# # # Establish the connection to Elasticsearch
+# from elasticsearch_dsl import connections
+# connections.configure(**ELASTICSEARCH_DSL)
+
+    
 # LOGGING CONGIG
 LOGGING = {
     "version": 1,
