@@ -78,3 +78,9 @@ search-rebuild:
 
 search-populate:
 	docker compose -f local.yml exec api python manage.py search_index --populate
+
+test-coverage:
+	docker compose -f local.yml run --rm api pytest -p no:warnings --cov=. -v
+
+test-coverage-html:
+	docker compose -f local.yml run --rm api pytest -p no:warnings --cov=. --cov-report html
