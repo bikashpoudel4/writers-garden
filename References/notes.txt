@@ -39,3 +39,9 @@
 Check files: 
      - envs.local - .django
      - core.settings - local.py
+
+
+5. CODE QUALITY with
+     - Flake8
+     - Black
+     - Isort
