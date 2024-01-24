@@ -1,17 +1,19 @@
 import re
 from math import ceil
 
-class ArticleReadTimeEngine:
 
+class ArticleReadTimeEngine:
     @staticmethod
     def word_count(text):
         # Use the re (regular expression) module to find all words in the input text
         words = re.findall(r"\w+", text)
-         # Return the count of words in the text
+        # Return the count of words in the text
         return len(words)
-    
+
     @staticmethod
-    def estimate_reading_time(article, words_per_minute=250, seconds_per_image=10, seconds_per_tag=2):
+    def estimate_reading_time(
+        article, words_per_minute=250, seconds_per_image=10, seconds_per_tag=2
+    ):
         # Calculate word count for the body, title, and description of the article
         word_count_body = ArticleReadTimeEngine.word_count(article.body)
         word_count_title = ArticleReadTimeEngine.word_count(article.title)
@@ -23,7 +25,7 @@ class ArticleReadTimeEngine:
         # Calculate reading time in minutes based on words per minute
         reading_time = total_word_count / words_per_minute
 
-         # If there's a banner image, add the corresponding time in minutes
+        # If there's a banner image, add the corresponding time in minutes
         if article.banner_image:
             reading_time += seconds_per_image / 60
 

@@ -1,9 +1,9 @@
-from rest_framework import serializers
 from core_apps.articles.models import Article, ArticleView, Clap
-from core_apps.profiles.serializers import ProfileSerializer
 from core_apps.bookmarks.models import Bookmark
 from core_apps.bookmarks.serializers import BookmarkSerializer
+from core_apps.profiles.serializers import ProfileSerializer
 from core_apps.responses.serializers import ResponseSerializer
+from rest_framework import serializers
 
 
 class TagListField(serializers.Field):
@@ -29,14 +29,14 @@ class TagListField(serializers.Field):
             if not tag_name:
                 continue
             tag_objects.append(tag_name)
-        return tag_objects\
-
+        return tag_objects
 
 
 class ArticleSerializer(serializers.ModelSerializer):
     """
     Serializer for the Article model, including custom fields and methods.
     """
+
     author_info = ProfileSerializer(source="author.profile", read_only=True)
     banner_image = serializers.SerializerMethodField()
     estimated_reading_time = serializers.ReadOnlyField()
@@ -51,7 +51,6 @@ class ArticleSerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
 
-    
     def get_responses_count(self, obj):
         return obj.responses.count()
 
@@ -61,7 +60,7 @@ class ArticleSerializer(serializers.ModelSerializer):
     def get_bookmarks(self, obj):
         bookmarks = Bookmark.objects.filter(article=obj)
         return BookmarkSerializer(bookmarks, many=True).data
-    
+
     def get_bookmarks_count(self, obj):
         return Bookmark.objects.filter(article=obj).count()
 
@@ -113,7 +112,9 @@ class ArticleSerializer(serializers.ModelSerializer):
         instance.title = validated_data.get("title", instance.title)
         instance.description = validated_data.get("description", instance.description)
         instance.body = validated_data.get("body", instance.body)
-        instance.banner_image = validated_data.get("banner_image", instance.banner_image)
+        instance.banner_image = validated_data.get(
+            "banner_image", instance.banner_image
+        )
         instance.updated_at = validated_data.get("updated_at", instance.updated_at)
 
         if "tags" in validated_data:
@@ -144,6 +145,7 @@ class ArticleSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         ]
+
 
 class ClapSerializer(serializers.ModelSerializer):
     article_title = serializers.CharField(source="article.title", read_only=True)

@@ -45,3 +45,10 @@ Check files:
      - Flake8
      - Black
      - Isort
+
+IMPORTANT TO KNOW AND MUST SEE ABOUT
+     - pyproject.toml
+     - [tool.flake8]
+          ignore = "E203, E501, W503"
+     - Elastic Search
+     - Payment Integration

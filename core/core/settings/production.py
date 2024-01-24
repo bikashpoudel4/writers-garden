@@ -1,4 +1,4 @@
-from .base import * #noqa
+from .base import *  # noqa
 from .base import env
 
 # django will email these people thae details of exceptions raised in request or response cycle in production.

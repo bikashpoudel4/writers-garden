@@ -1,7 +1,8 @@
 from django.test import TestCase
-
 from rest_framework import serializers
+
 from .models import Response
+
 
 class ResponseSerializer(serializers.ModelSerializer):
     user_first_name = serializers.CharField(source="user.first_name", read_only=True)

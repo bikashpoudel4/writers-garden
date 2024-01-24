@@ -1,6 +1,14 @@
 from django.urls import path
-from .views import (ProfileListAPIView, ProfileDetailAPIView, UpdateProfileAPIView, 
-                    FollowerListView, FollowingListView, FollowAPIView, UnfollowAPIView)
+
+from .views import (
+    FollowAPIView,
+    FollowerListView,
+    FollowingListView,
+    ProfileDetailAPIView,
+    ProfileListAPIView,
+    UnfollowAPIView,
+    UpdateProfileAPIView,
+)
 
 urlpatterns = [
     path("all/", ProfileListAPIView.as_view(), name="all-profiles"),
