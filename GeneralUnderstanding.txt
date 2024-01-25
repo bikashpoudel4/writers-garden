@@ -1,0 +1,19 @@
+Intro to IaaS,Paas and Dbaas
+There are so many ways and platforms to deploy your Django applications,Some being easier to use than others
+
+The deployment options we have can be broadly categorized into 2: i.e whether to use a Platform-as-a-Service (PaaS) or Infrastructure-as-a- Service (IaaS). For database solutions, we also have Database-as-a-service(DbaaS).
+
+A PaaS is an opinionated hosting option that handles much of the initial configuration and scaling needed for a webapp. Popular examples include Heroku, PythonAnywhere, among many others.
+
+While a PaaS costs more money upfront than an IaaS, it saves an incredible amount of developer time, handles security updates automatically, and can be quickly scaled.
+
+An IaaS by contrast provides total flexibility, is typically cheaper, but it requires a high degree of knowledge and effort to properly set up. Prominent IaaS options include DigitalOcean, Linode, Amazon EC2, and Google Compute Engine among many others.
+
+A Dbaas also known as a managed database service is a cloud computing service that lets users access and use a cloud database system without purchasing and setting up their own hardware, installing their own software or managing the database themselves. Examples include amazon RDS, MongoDB Atlas, Azure sql database, Amazon’s DynamoDb among others
+
+For our production build, we shall use an Iaas. We shall use Digital ocean (an IaaS) for our Ubuntu server running Docker.
+
+Please note that you can use whatever virtual server from any provider you wish as long as you configure it to use Ubuntu as we shall be using in our build.
+
+During this production build, we shall also be using a domain name. Feel free to register for a domain name from registrars such as GoDaddy,Hover,Namecheap etc. I will personally be using namecheap.
+
