@@ -6,11 +6,11 @@ User = get_user_model()
 
 @pytest.mark.django_db
 def test_create_normal_user(normal_user):
-    assert normal_user.first_name
-    assert normal_user.last_name
-    assert normal_user.email
-    assert normal_user.password
-    assert normal_user.pkid
+    assert normal_user.first_name is not None
+    assert normal_user.last_name is not None
+    assert normal_user.email is not None
+    assert normal_user.password is not None
+    assert normal_user.pkid is not None
     assert not normal_user.is_staff
     assert not normal_user.is_superuser
     assert normal_user.is_active
@@ -18,11 +18,11 @@ def test_create_normal_user(normal_user):
 
 @pytest.mark.django_db
 def test_create_superuser(super_user):
-    assert super_user.first_name
-    assert super_user.last_name
-    assert super_user.email
-    assert super_user.password
-    assert super_user.pkid
+    assert super_user.first_name is not None
+    assert super_user.last_name is not None
+    assert super_user.email is not None
+    assert super_user.password is not None
+    assert super_user.pkid is not None
     assert super_user.is_staff
     assert super_user.is_superuser
     assert super_user.is_active
@@ -30,13 +30,16 @@ def test_create_superuser(super_user):
 
 @pytest.mark.django_db
 def test_get_full_name(normal_user):
-    full_name = normal_user.get_full_name()
-    expected_full_name = f"{normal_user.first_name.title()} {normal_user.last_name.title()}"
+    full_name = normal_user.get_full_name
+    expected_full_name = (
+        f"{normal_user.first_name.title()} {normal_user.last_name.title()}"
+    )
     assert full_name == expected_full_name
+
 
 @pytest.mark.django_db
 def test_get_short_name(normal_user):
-    short_name = normal_user.get_short_name()
+    short_name = normal_user.get_short_name
     assert short_name == normal_user.first_name
 
 
@@ -64,8 +67,7 @@ def test_delete_user(normal_user):
 
 @pytest.mark.django_db
 def test_user_str(normal_user):
-    user_str = str(normal_user)
-    assert user_str == f"{normal_user.first_name}"
+    assert str(normal_user) == f"{normal_user.first_name}"
 
 
 @pytest.mark.django_db
@@ -82,47 +84,55 @@ def test_super_user_email_is_normalized(super_user):
 
 @pytest.mark.django_db
 def test_user_email_incorrect(user_factory):
-    with pytest.raises(ValueError, match="You must provide a valid email address."):
-        user_factory.create(email="saras.soft@gmail.com")
+    with pytest.raises(ValueError) as err:
+        user_factory.create(email="realstate.com")
+    assert str(err.value) == "You must provide a valid email address."
 
 
 @pytest.mark.django_db
 def test_create_user_with_no_firstname(user_factory):
-    with pytest.raises(ValueError, match="Users must have a first name."):
+    with pytest.raises(ValueError) as err:
         user_factory.create(first_name=None)
+    assert str(err.value) == "Users must have a first name."
 
 
 @pytest.mark.django_db
 def test_create_user_with_no_lastname(user_factory):
-    with pytest.raises(ValueError, match="Users must have a last name."):
+    with pytest.raises(ValueError) as err:
         user_factory.create(last_name=None)
+    assert str(err.value) == "Users must have a last name."
 
 
 @pytest.mark.django_db
 def test_create_user_with_no_email(user_factory):
-    with pytest.raises(ValueError, match="Users must have an email."):
+    with pytest.raises(ValueError) as err:
         user_factory.create(email=None)
+    assert str(err.value) == "Users must have an email address."
 
 
 @pytest.mark.django_db
 def test_create_superuser_with_no_email(user_factory):
-    with pytest.raises(ValueError, match="Superuser must have an email address."):
+    with pytest.raises(ValueError) as err:
         user_factory.create(email=None, is_superuser=True, is_staff=True)
+    assert str(err.value) == "Superuser must have an email address."
 
 
 @pytest.mark.django_db
-def test_create_superuser_with_no_password(user_factory):
-    with pytest.raises(ValueError, match="Superuser must have a password."):
+def test_create_superuser_with_no_pasword(user_factory):
+    with pytest.raises(ValueError) as err:
         user_factory.create(password=None, is_superuser=True, is_staff=True)
+    assert str(err.value) == "Superuser must have a password."
 
 
 @pytest.mark.django_db
 def test_super_user_is_not_staff(user_factory):
-    with pytest.raises(ValueError, match="Superuser must have is_staff=True."):
+    with pytest.raises(ValueError) as err:
         user_factory.create(is_superuser=True, is_staff=False)
+    assert str(err.value) == "Superuser must have is_staff=True."
 
 
 @pytest.mark.django_db
 def test_super_user_is_not_superuser(user_factory):
-    with pytest.raises(ValueError, match="Superuser must have is_superuser=True."):
+    with pytest.raises(ValueError) as err:
         user_factory.create(is_superuser=False, is_staff=True)
+    assert str(err.value) == "Superuser must have is_superuser=True."
