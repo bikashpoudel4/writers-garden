@@ -28,6 +28,10 @@
           Check
                - docker volume inspect src_local_postgres_data
 
+     CREATE SSH KEY 
+     - open terminal
+     - ssh-keygen
+
 
 
      -FOR MAC BOOK
