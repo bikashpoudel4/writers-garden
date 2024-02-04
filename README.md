@@ -14,7 +14,7 @@
   -   Token Based Authentication
   -   Emails using Mailhog in development
 
-### To run an application
+## To run an application
 1. Start Docker Desktop
 2. Open terminal
     - cd core
